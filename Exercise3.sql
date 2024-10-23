@@ -17,8 +17,10 @@ CREATE TABLE IF NOT EXISTS ASIGNATURA (
 CREATE TABLE IF NOT EXISTS MATRICULA (
     curso_academico CHAR(9),
     CONSTRAINT comprobar_curso_academico CHECK (curso_academico REGEXP '^[0-9]{4}/[0-9]{4}$'),
-    id_matricula REFERENCES ALUMNO(id_matricula),
-    id_asignatura REFERENCES ASIGNATURA(id_asignatura),
+    id_matricula CHAR(15),
+    FOREIGN KEY (id_matricula) REFERENCES ALUMNO(id_matricula),
+    id_asignatura VARVHAR(20),
+    FOREIGN KEY (id_asignatura) REFERENCES ASIGNATURA(id_asignatura),
     pagado BOOLEAN
 );
 
@@ -27,7 +29,8 @@ CREATE TABLE IF NOT EXISTS PROFESOR (
     nif_profesor CHAR(9),
     nombre VARCHAR(20),
     telefono VARCHAR(9),
-    especialidad VARCHAR(9) REFERENCES ASIGNATURA(id_asignatura)
+    especialidad VARCHAR(9),
+    FOREIGN KEY (especialidad) REFERENCES ASIGNATURA(id_asignatura)
 );
 
 DESCRIBE ALUMNO;
