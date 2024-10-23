@@ -11,14 +11,14 @@ CREATE TABLE IF NOT EXISTS PROVINCIA (
     codigo_provincia CHAR(2) PRIMARY KEY,
     nombre VARCHAR(20),
     codigo_region char(2),
-    FOREIGN KEY (codigo_region) REFERENCES REGION(codigo_region)
+    FOREIGN KEY (codigo_region) REFERENCES REGION(codigo_region) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS LOCALIDAD (
     codigo_localidad CHAR(3) PRIMARY KEY;
     nombre VARCHAR(20),
     codigo_provincia CHAR(2),
-    FOREIGN KEY (codigo_provincia) REFERENCES PROVINCIA(codigo_provincia)
+    FOREIGN KEY (codigo_provincia) REFERENCES PROVINCIA(codigo_provincia) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS EMPLEADO (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS EMPLEADO (
     telefono VARCHAR(9),
     salario_anual INT,
     localidad_nacimiento CHAR(20),
-    FOREIGN KEY (localidad_nacimiento) REFERENCES LOCALIDAD(codigo_localidad)
+    FOREIGN KEY (localidad_nacimiento) REFERENCES LOCALIDAD(codigo_localidad) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 DESCRIBE REGION;
