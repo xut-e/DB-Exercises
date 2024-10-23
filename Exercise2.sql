@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS VEHICULOS (
     matricula CHAR(7) PRIMARY KEY,
     propietario VARCHAR(20),
     marca VARCHAR(20),
-    reparado_por CHAR(9) REFERENCES MECANICOS(dni)
+    reparado_por CHAR(9),
+    FOREIGN KEY (reparado_por) REFERENCES MECANICOS(dni)
 );
 
 DESCRIBE MECANICOS;
