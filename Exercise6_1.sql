@@ -8,11 +8,12 @@ CREATE TABLE IF NOT EXISTS ZOO (
     ciudad VARCHAR(20),
     pais VARCHAR(10),
     presupuesto INT UNSIGNED,
-    superficie INT UNSIGNED
+    superficie INT UNSIGNED,
+    CONSTRAINT comprobar_superficie CHECK (superficie BETWEEN 1000 AND 1000000)
 );
 
 CREATE TABLE IF NOT EXISTS ESPECIE (
-    id_especie VARCHAR(10) PRIMARY KEY,
+    id_especie VARCHAR(10) AUTO_INCREMENT PRIMARY KEY,
     nombre_vulgar VARCHAR(15),
     nombre_cientifico VARCHAR(25),
     familia VARCHAR(15),
