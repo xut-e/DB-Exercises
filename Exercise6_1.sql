@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS ZOO (
 );
 
 CREATE TABLE IF NOT EXISTS ESPECIE (
-    id_especie VARCHAR(10) AUTO_INCREMENT PRIMARY KEY,
+    id_especie INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre_vulgar VARCHAR(15),
     nombre_cientifico VARCHAR(25),
     familia VARCHAR(15),
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS ANIMAL (
     continente VARCHAR(9),
     zoo_pertenece VARCHAR(10),
     FOREIGN KEY (zoo_pertenece) REFERENCES ZOO(id_zoo) ON DELETE SET NULL ON UPDATE CASCADE,
-    especie_pertenece VARCHAR(10),
+    especie_pertenece INT UNSIGNED,
     FOREIGN KEY (especie_pertenece) REFERENCES ESPECIE(id_especie) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
