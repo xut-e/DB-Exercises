@@ -4,7 +4,7 @@ USE plantilla_empleados;
 
 CREATE TABLE IF NOT EXISTS REGION (
     codigo_region CHAR(2) PRIMARY KEY,
-    nombre VARCHAR(21),
+    nombre VARCHAR(21)
 );
 
 CREATE TABLE IF NOT EXISTS PROVINCIA (
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS PROVINCIA (
 );
 
 CREATE TABLE IF NOT EXISTS LOCALIDAD (
-    codigo_localidad CHAR(3) PRIMARY KEY;
+    codigo_localidad CHAR(3) PRIMARY KEY,
     nombre VARCHAR(20),
     codigo_provincia CHAR(2),
     FOREIGN KEY (codigo_provincia) REFERENCES PROVINCIA(codigo_provincia) ON DELETE SET NULL ON UPDATE CASCADE

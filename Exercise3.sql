@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS ALUMNO (
 );
 
 CREATE TABLE IF NOT EXISTS ASIGNATURA (
-    id_asignatura VARCHAR(9),
+    id_asignatura VARCHAR(20) PRIMARY KEY,
     nombre VARCHAR(20)
 );
 
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS MATRICULA (
     CONSTRAINT comprobar_curso_academico CHECK (curso_academico REGEXP '^[0-9]{4}/[0-9]{4}$'),
     id_matricula CHAR(15),
     FOREIGN KEY (id_matricula) REFERENCES ALUMNO(id_matricula) ON DELETE SET NULL ON UPDATE CASCADE,
-    id_asignatura VARVHAR(20),
+    id_asignatura VARCHAR(20),
     FOREIGN KEY (id_asignatura) REFERENCES ASIGNATURA(id_asignatura) ON DELETE SET NULL ON UPDATE CASCADE,
     pagado BOOLEAN
 );
