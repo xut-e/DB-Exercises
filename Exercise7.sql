@@ -1,0 +1,21 @@
+CREATE DATABASE bestiario;
+
+USE bestiario;
+
+CREATE TABLE IF NOT EXISTS ANIMALES(
+    nombre VARCHAR(20),
+    tipo VARCHAR(20),
+    raza VARCHAR(20),
+    peso INTEGER,
+    color VARCHAR(20)
+);
+
+ALTER TABLE ANIMALES ADD PRIMARY KEY(nombre);
+
+CREATE TABLE IF NOT EXISTS ENCANTAMIENTOS (
+    id_encantamiento INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    datos_encantamiento VARCHAR(150),
+    nombre_mago VARCHAR(20),
+    animal_encantado VARCHAR(20),
+    FOREIGN KEY (animal_encantado) REFERENCES ANIMALES(nombre) ON DELETE SET NULL ON UPDATE CASCADE
+);
