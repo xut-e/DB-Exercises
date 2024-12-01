@@ -1,4 +1,4 @@
-USE escuela;
+USE centro_estudios;
 
 INSERT INTO PROFESOR VALUES ('001', '12312312A', 'Joel Miller', '601001100');
 

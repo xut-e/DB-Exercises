@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS centro_estudios;
+
+USE centro_estudios;
+
 CREATE TABLE IF NOT EXISTS ALUMNO (
     id_matricula CHAR(15) PRIMARY KEY,
     nombre VARCHAR(20),
