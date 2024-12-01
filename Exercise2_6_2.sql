@@ -22,4 +22,19 @@ INSERT INTO CASO (id_caso, fecha_inicio, fecha_final, estado, id_cliente) VALUES
 ('CASO000014', '2024-05-12', NULL, TRUE, 'C00008');
 
 -- Asignar a abogados 3 asuntos nuevos o de otro abogado.
-UPDATE DIRECCION_CASO SET id_procurador = 
+UPDATE DIRECCION_CASO SET id_procurador = 'P00001' WHERE id_caso = 'CASO000006';
+UPDATE DIRECCION_CASO SET id_procurador = 'P00002' WHERE id_caso = 'CASO000007';
+UPDATE DIRECCION_CASO SET id_procurador = 'P00003' WHERE id_caso = 'CASO000002';
+
+SELECT * FROM PROCURADOR;
+SELECT * FROM CLIENTE;
+SELECT * FROM CASO;
+SELECT * FROM DIRECCION_CASO;
+
+-- Borrar a un cliente y comprobar qué ha pasado.
+DELETE FROM CLIENTE WHERE id_cliente = 'C00001';
+
+SELECT * FROM PROCURADOR;
+SELECT * FROM CLIENTE;
+SELECT * FROM CASO;
+SELECT * FROM DIRECCION_CASO;
