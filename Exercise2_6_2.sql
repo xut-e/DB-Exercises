@@ -21,6 +21,22 @@ INSERT INTO CASO (id_caso, fecha_inicio, fecha_final, estado, id_cliente) VALUES
 ('CASO000013', '2023-03-03', '2024-05-02', FALSE, 'C00008'),
 ('CASO000014', '2024-05-12', NULL, TRUE, 'C00008');
 
+-- Insertar los nuevos casos en direccion de caso.
+INSERT INTO DIRECCION_CASO (id_caso, id_procurador, ganado) VALUES
+('CASO000006', 'P00004', NULL),
+('CASO000007', 'P00003', NULL),
+('CASO000008', 'P00002', NULL);
+
+INSERT INTO DIRECCION_CASO (id_caso, id_procurador, ganado) VALUES
+('CASO000009', 'P00005', FALSE),
+('CASO000010', 'P00003', TRUE),
+('CASO000011', 'P00001', NULL);
+
+INSERT INTO DIRECCION_CASO (id_caso, id_procurador, ganado) VALUES
+('CASO000012', 'P00003', TRUE),
+('CASO000013', 'P00002', TRUE),
+('CASO000014', 'P00004', NULL);
+
 -- Asignar a abogados 3 asuntos nuevos o de otro abogado.
 UPDATE DIRECCION_CASO SET id_procurador = 'P00001' WHERE id_caso = 'CASO000006';
 UPDATE DIRECCION_CASO SET id_procurador = 'P00002' WHERE id_caso = 'CASO000007';
