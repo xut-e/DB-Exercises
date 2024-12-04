@@ -16,7 +16,7 @@ VALUES
 ('P003', '11223344C', 'Miguel Sánchez', '646765432'),
 ('P004', '44556677D', 'Laura Rodríguez', '647876543'),
 ('P005', '99887766E', 'José García', '648987654'),
-('P006', '12348877F', 'Ana Torres', '649876543');
+('P006', '12348877F', 'Ana Torres', '649876549');
 
 INSERT INTO ASIGNATURA (id_asignatura, nombre, codigo_profesor)
 VALUES
@@ -37,4 +37,6 @@ VALUES
 ('2023/2024', 'A123456789006', 'ING06', TRUE);
 
 SELECT COUNT(*) AS total_alumnos FROM ALUMNO;
-SELECT COUNT(*) AS total_alumnos_matriculados_2022 FROM MATRICULA WHERE (curso_academico = "2022/2023" OR curso_academico = "2021/2022")
+SELECT COUNT(*) AS total_alumnos_matriculados_2022 FROM MATRICULA WHERE (curso_academico = "2022/2023" OR curso_academico = "2021/2022");
+SELECT id_profesor FROM PROFESOR WHERE nif_profesor LIKE '4%';
+SELECT nombre, telefono FROM PROFESOR WHERE telefono LIKE '%9';
