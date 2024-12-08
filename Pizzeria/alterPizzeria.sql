@@ -64,6 +64,11 @@ ALTER TABLE INGREDIENTS_ALLERGENS ADD CONSTRAINT ingredients_allergens_ibfk_1 FO
 ALTER TABLE PIZZAS_INGREDIENTS ADD CONSTRAINT pizzas_ingredients_ibfk_2 FOREIGN KEY (ingredient_id) REFERENCES INGREDIENTS(ingredient_id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE INGREDIENTS_ALLERGENS ADD CONSTRAINT ingredients_allergens_ibfk_2 FOREIGN KEY (allergen_id) REFERENCES ALLERGENS(allergen_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
+-- Añadimos la constraint del check.
+
+ALTER TABLE PIZZAS_INGREDIENTS ADD CONSTRAINT check_grams CHECK (grams_per_ingredient BETWEEN 10 AND 30);
+
+
 -- Comprobamos que las tablas estan bien creadas.
 
 DESCRIBE CLIENTS;

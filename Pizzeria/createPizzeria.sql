@@ -77,8 +77,7 @@ CREATE TABLE IF NOT EXISTS PIZZAS_INGREDIENTS (
     FOREIGN KEY (pizza_id) REFERENCES PIZZAS(pizza_id) ON DELETE CASCADE ON UPDATE CASCADE,
     ingredient_id VARCHAR(9),
     FOREIGN KEY (ingredient_id) REFERENCES INGREDIENTS(ingredient_id) ON DELETE CASCADE ON UPDATE CASCADE,
-    grams_per_ingredient TINYINT UNSIGNED,
-    CHECK (grams_per_ingredient BETWEEN 10 and 30)
+    grams_per_ingredient TINYINT UNSIGNED
 );
 
 DESCRIBE CLIENTS;
