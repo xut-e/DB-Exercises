@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS ORDERS (
     order_id VARCHAR(9) PRIMARY KEY,
     total_price SMALLINT UNSIGNED,
     order_date DATE NOT NULL DEFAULT (CURRENT_DATE),
+    order_time TIME,
     order_state ENUM('Pending', 'Preparation', 'Ready/Delivering', 'Served/Delivered', 'Cancelled') NOT NULL DEFAULT 'Pending',
     dni_client CHAR(9),
     FOREIGN KEY (dni_client) REFERENCES CLIENTS(dni) ON DELETE CASCADE ON UPDATE CASCADE

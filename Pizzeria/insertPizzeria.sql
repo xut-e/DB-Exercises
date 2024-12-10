@@ -1,3 +1,5 @@
+USE pizzeria;
+
 -- Inserciones para CLIENTS
 INSERT INTO CLIENTS (dni, client_name, client_address, client_phone) VALUES
 ('11111111A', 'Juan Perez', 'Calle Falsa 123', '600111111'),
@@ -13,17 +15,18 @@ INSERT INTO CLIENTS (dni, client_name, client_address, client_phone) VALUES
 
 -- Inserciones para ORDERS
 -- Cálculo: Precio Total = Precio Base Pizza + Precio Masa + Precio Ingredientes * Número Ingredientes * Número Pizzas
-INSERT INTO ORDERS (total_price, order_date, order_state, dni_client) VALUES
-(40, '2023-12-01', 'Served/Delivered', '11111111A'),  -- Margarita + Pepperoni (2 pizzas)
-(14, '2023-12-01', 'Cancelled', '22222222B'), -- Cuatro Quesos (1 pizza)
-(56, '2023-12-01', 'Ready/Delivering', '33333333C'), -- Vegetal + Hawaiana (2 pizzas)
-(20, '2023-12-01', 'Served/Delivered', '44444444D'), -- Barbacoa (1 pizza)
-(52, '2023-12-02', 'Cancelled', '55555555E'), -- Mexicana + Carbonara + Caprichosa (3 pizzas)
-(14, '2023-12-02', 'Served/Delivered', '66666666F'), -- Diávola (1 pizza)
-(56, '2023-12-02', 'Pending', '77777777G'), -- Margarita + Barbacoa (2 pizzas)
-(72, '2023-12-02', 'Preparation', '88888888H'), -- Pepperoni + Cuatro Quesos + Vegetal (3 pizzas)
-(20, '2023-12-02', 'Ready/Delivering', '99999999I'), -- Hawaiana (1 pizza)
-(104, '2023-12-02', 'Pending', '10101010J'); -- Diávola + Barbacoa + Caprichosa (3 pizzas)
+INSERT INTO ORDERS (total_price, order_date, order_time, order_state, dni_client) VALUES
+(40, '2023-12-01', '12:30:00', 'Served/Delivered', '11111111A'),  -- Margarita + Pepperoni (2 pizzas)
+(14, '2023-12-01', '11:15:00', 'Cancelled', '22222222B'),         -- Cuatro Quesos (1 pizza)
+(56, '2023-12-01', '13:00:00', 'Served/Delivered', '33333333C'),  -- Vegetal + Hawaiana (2 pizzas)
+(20, '2023-12-01', '12:45:00', 'Served/Delivered', '44444444D'),  -- Barbacoa (1 pizza)
+(52, '2023-12-02', '10:00:00', 'Cancelled', '55555555E'),        -- Mexicana + Carbonara + Caprichosa (3 pizzas)
+(14, '2023-12-02', '13:30:00', 'Served/Delivered', '66666666F'),  -- Diávola (1 pizza)
+(56, '2023-12-02', '09:30:00', 'Ready/Delivering', '77777777G'),           -- Margarita + Barbacoa (2 pizzas)
+(72, '2023-12-02', '10:45:00', 'Preparation', '88888888H'),       -- Pepperoni + Cuatro Quesos + Vegetal (3 pizzas)
+(20, '2023-12-02', '11:15:00', 'Preparation', '99999999I'),  -- Hawaiana (1 pizza)
+(104, '2023-12-02', '09:00:00', 'Pending', '10101010J'),          -- Diávola + Barbacoa + Caprichosa (3 pizzas)
+(20, '2023-12-02', '12:00:00', 'Pending', '11111111A');  -- Hawaiana (1 pizza)
 
 
 -- Inserciones para PIZZAS
@@ -130,16 +133,17 @@ INSERT INTO ORDERS_PIZZAS (pizza_id, order_id) VALUES
 
 -- Inserciones para INGREDIENTS_ALLERGENS
 INSERT INTO INGREDIENTS_ALLERGENS (ingredient_id, allergen_id) VALUES
-(1, 1), 
-(2, 1), 
-(3, 2), 
-(4, 1), 
-(5, 5), 
-(6, 6), 
-(7, 7), 
-(8, 8), 
-(9, 9), 
-(10, 1);
+(1, 1), -- Pepperoni contiene Gluten (si viene en masa o aditivo).
+(2, 1), -- Tomate podría tener Gluten (si es en salsa procesada).
+(3, 2), -- Mozzarella contiene Lácteos.
+(4, 1), -- Jamón puede contener Gluten (aditivos).
+(5, 5), -- Piña podría tener Soja (envasada con conservantes).
+(6, 7), -- Aceitunas pueden contener Mostaza (en conservantes).
+(7, NULL), -- Champiñones no tienen alérgenos comunes.
+(8, NULL), -- Cebolla no tiene alérgenos comunes.
+(9, 1), -- Carne Picada podría contener Gluten (aditivos o aglutinantes).
+(10, 6), -- Jalapeños pueden contener Huevo (en conservantes procesados).
+(11, NULL); -- Pimientos no tienen alérgenos comunes.
 
 -- Inserciones para PIZZAS_INGREDIENTS
 INSERT INTO PIZZAS_INGREDIENTS (pizza_id, ingredient_id, grams_per_ingredient) VALUES
@@ -178,24 +182,3 @@ SELECT * FROM ORDERS_PIZZAS;
 SELECT * FROM PIZZAS_MASSES;
 SELECT * FROM INGREDIENTS_ALLERGENS;
 SELECT * FROM PIZZAS_INGREDIENTS;
-
--- Hacemos las acciones requeridas.
-
-DELETE FROM ALLERGENS WHERE allergen_id NOT IN (SELECT DISTINCT allergen_id FROM INGREDIENTS_ALLERGENS);
-SELECT * FROM ALLERGENS;
-
-UPDATE INGREDIENTS SET ingredient_price = ingredient_price * 1.20 WHERE ingredient_id NOT IN (SELECT DISTINCT ingredient_id FROM PIZZAS_INGREDIENTS);
-SELECT * FROM INGREDIENTS;
-
-
--- Existe un problema en el siguiente ejercicio y es que no nos deja hacer una subconsulta de la misma tabla que se esta modificando (restricciones de procesamiento interno).
--- Es por eso que la sentencia:
---  DELETE FROM ORDERS WHERE total_price = (SELECT MIN(total_price) FROM ORDERS);
--- No funciona. Se puede resolver de un par de maneras, yo he optado por la que me parece mas sencilla: declarar una variable que almacene el resultado de la subconsulta y despues eliminar los datos de la tabla.
-
-SET @min_price = (SELECT MIN(total_price) FROM ORDERS);
-
-DELETE FROM ORDERS
-WHERE total_price = @min_price;
-
-SELECT * FROM ORDERS;
