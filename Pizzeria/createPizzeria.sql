@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS PIZZAS (
 
 CREATE TABLE IF NOT EXISTS MASSES (
     mass_id VARCHAR(9) PRIMARY KEY,
-    mass_name VARCHAR(10),
+    mass_name VARCHAR(15),
     mass_price TINYINT UNSIGNED
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS INGREDIENT_TYPES (
 
 CREATE TABLE IF NOT EXISTS INGREDIENTS (
     ingredient_id VARCHAR(9) PRIMARY KEY,
-    ingredient_name VARCHAR(10),
+    ingredient_name VARCHAR(15),
     ingredient_price TINYINT UNSIGNED,
     ingredient_description VARCHAR(100),
     ingredient_type_id VARCHAR(9),
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS INGREDIENTS (
 
 CREATE TABLE IF NOT EXISTS ALLERGENS (
     allergen_id VARCHAR(9) PRIMARY KEY,
-    allergen_name VARCHAR(10),
+    allergen_name VARCHAR(15),
     allergen_description VARCHAR(100)
 );
 
