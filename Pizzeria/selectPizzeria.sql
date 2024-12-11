@@ -31,3 +31,11 @@ SELECT DISTINCT INGREDIENTS.ingredient_name AS ingredientes_con_alergenos FROM I
 -- 8. Muestra la media de precio por ingrediente.
 
 SELECT AVG(ingredient_price) AS media_precio_ingrediente FROM INGREDIENTS;
+
+-- 9. Muestra el total de gramos de ingredientes que contiene cada pizza.
+
+SELECT PIZZAS.pizza_name AS nombre_pizza, SUM(PIZZAS_INGREDIENTS.grams_per_ingredient) AS total_gramos FROM PIZZAS INNER JOIN PIZZAS_INGREDIENTS ON PIZZAS.pizza_id = PIZZAS_INGREDIENTS.pizza_id GROUP BY PIZZAS.pizza_id, PIZZAS.pizza_name;
+
+-- 10. Lista el numero total de pedidos por cliente, mostrando el nombre del cliente y el total de pedidos realizados.
+
+SELECT CLIENTS.client_name AS nombre_cliente, COUNT(ORDERS.order_id) AS total_pedidos FROM ORDERS LEFT JOIN CLIENTS ON CLIENTS.dni = ORDERS.dni_client GROUP BY CLIENTS.client_name, ORDERS.dni_client;
