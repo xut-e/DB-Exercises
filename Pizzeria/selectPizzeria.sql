@@ -39,3 +39,9 @@ SELECT PIZZAS.pizza_name AS nombre_pizza, SUM(PIZZAS_INGREDIENTS.grams_per_ingre
 -- 10. Lista el numero total de pedidos por cliente, mostrando el nombre del cliente y el total de pedidos realizados.
 
 SELECT CLIENTS.client_name AS nombre_cliente, COUNT(ORDERS.order_id) AS total_pedidos FROM ORDERS LEFT JOIN CLIENTS ON CLIENTS.dni = ORDERS.dni_client GROUP BY CLIENTS.client_name, ORDERS.dni_client;
+
+-- 11. Listar las pizzas que tienen mas de tres ingredientes mostrando el nombre de la pizza y el numero de ingredientes.
+
+SELECT PIZZAS.pizza_name AS nombre_pizza, COUNT(PIZZAS_INGREDIENTS.ingredient_id) AS total_ingredientes FROM PIZZAS LEFT JOIN PIZZAS_INGREDIENTS ON PIZZAS.pizza_id = PIZZAS_INGREDIENTS.pizza_id GROUP BY PIZZAS.pizza_id, PIZZAS.pizza_name HAVING COUNT(PIZZAS_INGREDIENTS.ingredient_id) > 3;
+
+-- 12. Extrae la facturacion que ha tenido un cliente especifico en toda su vida, indicando la base
