@@ -1,3 +1,5 @@
+USE pizzeria;
+
 -- Hacemos las acciones requeridas.
 
 DELETE FROM ALLERGENS WHERE allergen_id NOT IN (SELECT DISTINCT allergen_id FROM INGREDIENTS_ALLERGENS);
