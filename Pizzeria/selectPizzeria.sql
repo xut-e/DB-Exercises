@@ -44,4 +44,6 @@ SELECT CLIENTS.client_name AS nombre_cliente, COUNT(ORDERS.order_id) AS total_pe
 
 SELECT PIZZAS.pizza_name AS nombre_pizza, COUNT(PIZZAS_INGREDIENTS.ingredient_id) AS total_ingredientes FROM PIZZAS LEFT JOIN PIZZAS_INGREDIENTS ON PIZZAS.pizza_id = PIZZAS_INGREDIENTS.pizza_id GROUP BY PIZZAS.pizza_id, PIZZAS.pizza_name HAVING COUNT(PIZZAS_INGREDIENTS.ingredient_id) > 3;
 
--- 12. Extrae la facturacion que ha tenido un cliente especifico en toda su vida, indicando la base
+-- 12. Extrae la facturacion que ha tenido un cliente especifico en toda su vida, indicando la base imponible, el IVA y el total facturado.
+
+SELECT CLIENTS.dni AS id_cliente, CLIENTS.client_name AS nombre_cliente, SUM(ORDERS.total_price / 1.21) AS base_imponible, SUM(ORDERS.total_price - (ORDERS.total_price / 1.21)) AS IVA, SUM(ORDERS.total_price) AS total_facturado FROM CLIENTS INNER JOIN ORDERS ON CLIENTS.dni = ORDERS.dni_client WHERE CLIENTS.dni = '55555555E' GROUP BY CLIENTS.dni, CLIENTS.client_name; -- Donde pone 55555555E sustituir por el cliente deseado.
