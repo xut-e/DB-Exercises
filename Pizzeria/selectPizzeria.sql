@@ -14,7 +14,7 @@ SELECT pizza_name FROM PIZZAS WHERE base_price = (SELECT MAX(base_price) FROM PI
 
 -- 4. Listar las tres masas mas caras ordenadas por precio, de la mas cara a la mas barata.
 
-SELECT mass_name, mass_price FROM MASSES ORDER BY mass_price DESC;
+SELECT mass_name, mass_price FROM MASSES ORDER BY mass_price DESC LIMIT 3;
 
 -- 5. Listar cuantos pedidos ha hecho cada cliente.
 
