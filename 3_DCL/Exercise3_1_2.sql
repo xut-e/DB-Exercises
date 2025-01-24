@@ -1,11 +1,11 @@
 mysql -u root -p;
 root;
 
-CREATE USER 'navi'@'localhost';
+CREATE USER 'navi'@'localhost' IDENTIFIED BY 'naviPassword';
 GRANT USAGE ON *.* TO 'navi'@'localhost';
 SHOW GRANTS FOR 'navi'@'localhost';
 
-CREATE USER 'skullkid'@'localhost' IDENTIFIED BY 'skullkidpassword';
+CREATE USER 'skullkid'@'localhost' IDENTIFIED BY 'skullkidPassword';
 GRANT USAGE ON *.* FOR 'skullkid'@'localhost';
 SHOW GRANTS FOR 'skullkid'@'localhost';
 
@@ -17,6 +17,7 @@ SHOW GRANTS FOR 'navi'@'localhost';
 
 exit;
 mysql -u 'navi'@'localhost' -p;
+naviPassword;
 GRANT SELECT ON hyrule.mascaras TO 'skullkid'@'localhost';
 SHOW GRANTS FOR 'skullkid'@'localhost';
 
@@ -33,7 +34,7 @@ GRANT SELECT (id_arma, nombre) ON hyrule.armas TO 'skullkid'@'localhost';
 
 exit;
 mysql -u 'skullkid'@'localhost' -p;
-skullkidpassword;
+skullkidPassword;
 
 SELECT * FROM hyrule.armas;
 
