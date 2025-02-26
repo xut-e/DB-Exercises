@@ -3,7 +3,7 @@ root;
 
 CREATE USER IF NOT EXISTS 'hector'@'172.31.99.230' IDENTIFIED BY 'contraseñaHector';
 
-GRANT SELECT ON hyrule.* FOR 'hector'@'172.31.99.230';
+GRANT SELECT ON hyrule.* TO 'hector'@'172.31.99.230';
 SHOW GRANTS FOR 'hector'@'172.31.99.230';
 
 REVOKE ALL PRIVILEGES FROM 'hector'@'172.31.99.230';
