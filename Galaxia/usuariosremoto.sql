@@ -5,14 +5,14 @@ root;
 CREATE USER IF NOT EXISTS 'et'@'192.168.1.33' IDENTIFIED BY 'etpassword';
 
 -- Le damos permisos de INSERT en todas las tablas
-GRANT INSERT ON galaxia.* FOR 'et'@'192.168.1.33';
+GRANT INSERT ON galaxia.* TO 'et'@'192.168.1.33';
 
 -- Comprobamos los permisos que tiene
 SHOW GRANTS FOR 'et'@'192.168.1.33';
 
--- Salimos del usuario root y nos conectamos con et
+-- Salimos del usuario root y nos conectamos con et (al servidor)
 exit;
-mysql -u et -p -h 192.168.1.33;
+mysql -u et -p -h 192.168.1.38;
 etpassword;
 
 -- Insertamos un nuevo tripulante para comprobar
