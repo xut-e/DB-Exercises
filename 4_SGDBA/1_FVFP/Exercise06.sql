@@ -8,7 +8,7 @@ BEGIN
     RETURN edad_validar >= 18;
 END //
 
-DELIMITER;
+DELIMITER ;
 
 SELECT validar_edad_mecanico(20) AS es_valida; -- Devuelve 1 (true)
 SELECT validar_edad_mecanico(16) AS es_valida; -- Devuelve 0 (false)
@@ -32,7 +32,7 @@ BEGIN
     RETURN anyos_exp;
 END //
 
-DELIMITER;
+DELIMITER ;
 
 
 SELECT anyos_de_experiencia('33333333C') AS experiencia; -- Devuelve 10
@@ -70,7 +70,7 @@ BEGIN
     SELECT 'INFO: Mecánico añadido correctamente' AS resultado;
 END //
 
-DELIMITER;
+DELIMITER ;
 
 -- D) Uso avanzado de SIGNAL para errores
 SIGNAL SQLSTATE '45000' -- Es el código de estado personalidado (45000-45999)

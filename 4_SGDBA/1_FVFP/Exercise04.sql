@@ -21,4 +21,4 @@ BEGIN
     RETURN resultado;
 END //
 
-DELIMITER;
+DELIMITER ;

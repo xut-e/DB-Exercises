@@ -20,7 +20,7 @@ BEGIN
     SELECT matricula, propietario, marca FROM vehiculos WHERE maraca = marca_param;
 END //
 
-DELIMITER;
+DELIMITER ;
 
 CALL vehiculos_por_marca('Ford');
 
@@ -32,7 +32,7 @@ BEGIN
     SELECT COUNT(*) INTO total FROM vehiculos WHERE reparado_por IS NOT NULL;
 END //
 
-DELIMITER;
+DELIMITER ;
 
 CALL contar_vehiculos_reparados(@total_reparados);
 SELECT @total_reparados AS 'Total de vehículos reparados';
@@ -57,7 +57,7 @@ BEGIN
     END IF;
 END // 
 
-DELIMITER;
+DELIMITER ;
 
 CALL anyadir_mecanico_si_no_existe('66666666F', 'Pau Garcia', 29, 'Barcelona');
 
