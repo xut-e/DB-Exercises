@@ -1,3 +1,4 @@
+#!/bin/bash
 # Primero creo el directorio y le doy el propietario correspondiente (he tenido que hacer esto porque al usar Kali Linux no existia dicho fichero).
 sudo mkdir -p /var/log/mysql
 sudo chown mysql:mysql /var/log/mysql
