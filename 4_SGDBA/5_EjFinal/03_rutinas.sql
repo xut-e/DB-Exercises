@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS historial_stock_productos (
 )
 
 -- Nos aseguramos de que haya una columna en la tabla productos para el stock
-ALTER TABLE productos ADD COLUMN IF NOT EXISTS stocl INT NOT NULL DEFAULT 10;
+ALTER TABLE productos ADD COLUMN IF NOT EXISTS stock INT NOT NULL DEFAULT 10;
 
 -- Creamos el procedimiento para actualizar el stock de los productos
 DELIMITER //
@@ -75,3 +75,6 @@ BEGIN
 END //;
 
 DELIMITER ;
+
+-- EJEMPLO DE USO:
+-- CALL actualizar_stock_productos(2, 'cliente1');
